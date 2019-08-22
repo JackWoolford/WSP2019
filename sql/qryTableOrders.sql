@@ -1,0 +1,7 @@
+CREATE TABLE ORDERS
+(OrderNum INT AUTO_INCREMENT PRIMARY KEY,
+ OrderDate CHAR(10),
+ CustID INT,
+ NumberOrdered INT,
+ QuotedPrice DOUBLE,
+ PartNum INT);

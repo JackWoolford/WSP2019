@@ -1,0 +1,2 @@
+SELECT PartName
+FROM PARTS;

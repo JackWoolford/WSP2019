@@ -1,0 +1,8 @@
+CREATE TABLE CUSTOMER
+(CustID INT AUTO_INCREMENT PRIMARY KEY,
+ FirstName CHAR(15), 
+ SurName CHAR(15), 
+ Street CHAR(25), 
+ City CHAR(15), 
+ State CHAR(3), 
+ Postcode CHAR(5));
