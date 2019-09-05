@@ -1,7 +1,73 @@
 html {
-    background-image: url(../images/FSS-1800.jpg);
+    background-image: url("../images/HorizontalMenuImages/FSS-1800.jpg");
 }
 
 body {
-    
+    width: 100%;
+    max-width: 925px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-image: url("../images/HorizontalMenuImages/taupeTile.png");
 }
+
+header {
+    width: 100%;
+    max-width: 925px;
+    min-width: 480px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    max-width: 925px;
+    min-width: 480px;
+}
+
+ul {
+    list-style: none;
+    padding: none;
+    margin: none;
+    width: 100%;
+    display: inline;
+}
+
+li {
+    float: left;
+    width: 20%;
+}
+
+a:link, :visited {
+    display: block;
+    padding: 5px 5px 5px 25px;
+    background-color: #633;
+    color: white;
+}
+
+a:hover, :focus {
+    background-color: #F93;
+    color: #600;
+}
+
+article {
+    padding: 20px;
+    clear: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    background-color: #948D67;
+    padding: 20px;
+    clear: left;
+}
+
+img#tram {
+    width: 400px;
+    height: 225px;
+}
+
+img#yarra {
+    width: 400px;
+    height: 225px;
+}
+
