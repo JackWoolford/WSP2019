@@ -44,6 +44,7 @@ li {
     float: left; 
     max-width: 100%;
     width: 33.3%;
+    text-align: center;
 }
 
 a:link, :visited {
@@ -81,3 +82,12 @@ img#yarra {
     height: 225px;
 }
 
+table {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+td {
+    text-align: center;
+}
