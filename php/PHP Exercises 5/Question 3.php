@@ -1,10 +1,16 @@
-<?php
-
+<form action = '<?php echo $_SERVER["PHP_SELF"];?>' method='post'>
     <p>        
-    First name: <input type='text' name='firstName'>
+        Year to convert: <input type='text' name='year'>
     </p>
 
-    $n = 0;
+    <p>
+        <input type='submit' name='submit' value='Submit'>
+    </p>
+</form>
+
+<?php
+function convertToRoman($year) {
+    $n = intval($year);
     $res = '';
 
     $romanNumber_Array = array(
@@ -23,14 +29,15 @@
         'I' => 1);
 
     foreach ($romanNumber_Array as $roman => $number) {
-        $matches = ($n / $number);
+        $matches = intval($n / $number);
 
-        $res = $res . str_repeat($roman, $matches);
+        $res .= str_repeat($roman, $matches);
 
         $n = $n % $number;
     }
+    return $res;
+}
 
-    echo $res;
-
-
+echo convertToRoman($_POST['year']);
+echo $year;
 ?>
