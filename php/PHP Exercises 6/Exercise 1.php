@@ -6,9 +6,9 @@
 <?php
 
 $arrCars = array (
-    "Make" => array("Ford", "Mazda", "Renault", "Vauxhall", "Toyota"),
-    "Colour" => array("Blue", "Black", "Red", "Green", "Red"),
-    "Quantity" => array(4,4,2,3,2)
+    "Make" => array("Holden", "Kia", "Honda", "Suzuki", "BMW"),
+    "Colour" => array("White", "Silver", "Yellow", "Purple", "White"),
+    "Quantity" => array(1,2,4,1,3)
 );
 
 foreach($arrCars["Make"] as $strKey => $strMake) {
