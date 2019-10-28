@@ -20,4 +20,4 @@ if(!mysqli_query($con, $sql)) {
 echo "1 record added";
 
 mysqli_close($con);
-?>
+?>Ja
