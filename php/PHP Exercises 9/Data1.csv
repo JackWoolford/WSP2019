@@ -1,14 +1,14 @@
-Price,Part,Descript
-$100,Generic VGA Cable,1M VGA Cable
-$200,Generic USB Extension Cable,2M USB Extension Cable
-$300,Generic Case - Blue,Generic Case in Blue Colour
-$250,Generic Case - White,Generic Case in White Colour
-$220,Generic Case - Black,Generic Case in Black Colour
-$210,Antec Eleven Case,Antec ATX Case in Black
-$300,AMD E233 CPU,AMDs base model CPU
-$350,AMD F654 CPU,AMDs top line model CPU
-$370,Intel 23E3 CPU,Intels base model CPU
-$380,Intel 87GG CPU,Intels top line model CPU
-$220,ATI G35 GPU,ATIs mid-range model GPU
-$220,ATI G55 GPU,ATIs top line model GPU
-$220,Nvidia 56T GPU,Nvidias mid-range model GPU
+('Price','Part','Descript')
+('$100','Generic VGA Cable','1M VGA Cable')
+('$200','Generic USB Extension Cable','2M USB Extension Cable')
+('$300','Generic Case - Blue','Generic Case in Blue Colour')
+('$250','Generic Case - White','Generic Case in White Colour')
+('$220','Generic Case - Black','Generic Case in Black Colour')
+('$210','Antec Eleven Case','Antec ATX Case in Black')
+('$300','AMD E233 CPU','AMDs base model CPU')
+('$350','AMD F654 CPU','AMDs top line model CPU')
+('$370','Intel 23E3 CPU','Intels base model CPU')
+('$380','Intel 87GG CPU','Intels top line model CPU')
+('$220','ATI G35 GPU','ATIs mid-range model GPU')
+('$220','ATI G55 GPU','ATIs top line model GPU')
+('$220','Nvidia 56T GPU','Nvidias mid-range model GPU')

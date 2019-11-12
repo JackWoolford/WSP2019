@@ -2,7 +2,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors',1);
 
-    $con=mysqli_connect("localhost","admin","Password1");
+    $con = mysqli_connect("localhost","admin","Password1");
     // Check connection
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -17,7 +17,13 @@
         echo "Error creating database: " . mysqli_error($con);
     }
 
-    $con=mysqli_connect("localhost","admin","Password1", "db_accounts");
+    $conn = new \PDO("mysql:host=localhost;dbname=db_accounts;", "admin", "Password1", array(
+        PDO::MYSQL_ATTR_LOCAL_INFILE => true,
+    ));
+    $con = mysqli_init();
+    mysqli_options($con, MYSQLI_OPT_LOCAL_INFILE, true);
+    mysqli_real_connect($con, "localhost", "admin", "Password1", "db_accounts");
+    //$con = mysqli_connect("localhost","admin","Password1", "db_accounts");
     // Check connection
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -45,9 +51,9 @@
     $sql2 = 
     "CREATE TABLE Accounts (
     AccountID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    CustID INT(6) NOT NULL,
-    ProductID INT(6) NOT NULL,
-    TotalCost CHAR(50)
+    CustID INT(6) NOT NULL DEFAULT 0,
+    ProductID INT(6) NOT NULL DEFAULT 0,
+    TotalCost CHAR(50) NOT NULL DEFAULT 0
     )";
 
     // Execute query
