@@ -7,8 +7,8 @@
    <body>
       <div class="container">
          <div class="header">
-         <!--you can add your banner in place of mine below-->
-         <img src= "banner.jpg"width="900"/>
+            <!--you can add your banner in place of mine below-->
+            <img src= "banner.jpg"width="900"/>
          </div>
          <!-- note navbar is same width as banner -->
          <div class="navbar">
