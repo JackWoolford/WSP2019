@@ -23,11 +23,7 @@
          </div>
       <div class="content">
       <div class="innerContent">
-         <p>
-         This is content. This should be displayed under the list.
-         Note this element is nested within the content div to allow the padding to work more effectively.
-         </p>
-         <h3>Sample Table </h3>
+         <h3>Parts </h3>
 
          <?php
          $con = mysqli_connect("localhost","admin","Password1", "CS_Tools");
@@ -68,8 +64,6 @@
          echo "</tbody>";
          echo "</table>";
          ?>
-
-         <h3> Sample Form </h3>
          </div></div>
          <div class="footer">
             <p id = "copyright">Copyright statement.</p>

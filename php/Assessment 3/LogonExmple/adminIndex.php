@@ -3,7 +3,7 @@
     <h1> Welcome to Admin Index</h1>
     <a href = "addPart.php"> Add Parts </a>
     <br>
-    <a href = "changeParts.php"> Update Parts </a>
+    <a href = "UpdatePart.php"> Update Parts </a>
     <br>
     <a href = "logout.php"> Logout </a>
 </html>

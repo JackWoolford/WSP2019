@@ -23,69 +23,101 @@
          </div>
       <div class="content">
       <div class="innerContent">
-         <p>
-         This is content. This should be displayed under the list.
-         Note this element is nested within the content div to allow the padding to work more effectively.
-         </p>
-         <h3>Sample Table </h3>
+         <h3>Select Category </h3>
+         
 
          <?php
-         $con = mysqli_connect("localhost","admin","Password1", "CS_Tools");
-         // Check connection
-         if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-         }
 
-         $partsResults = mysqli_query($con, "SELECT * FROM Parts");
+            error_reporting(E_ALL);
+            ini_set('display_errors',1);
 
-         echo "<table border='1'>";
-         echo "<thead>";
-         echo "<tr>";
+            // Connect to Database and alert if error
+            $DBConnect=mysqli_connect("localhost","admin","Password1","CS_Tools");
+            if (mysqli_connect_errno())
+            {
+               echo "Failed to connect to Database: " . mysqli_connect_error();
+            }
 
-         $partsTitles = mysqli_query($con, "SHOW COLUMNS FROM Parts");
-
-         while ($row = mysqli_fetch_assoc($partsTitles)) {
-            echo "<th>" . $row['Field'] . "</th>";
-         }
-
-         echo "</tr>";
-         echo "</thead>";
-         echo "<tbody>";
-
-         while($row = mysqli_fetch_array($partsResults)) {
-            echo "<tr>";
-            echo "<td>" . $row['PartNum'] . "</td>";
-            echo "<td>" . $row['PartName'] . "</td>";
-            echo "<td>" . $row['Description'] . "</td>";
-            echo "<td>" . $row['Specs'] . "</td>";
-            echo "<td>" . $row['OnHand'] . "</td>";
-            echo "<td>" . $row['Category'] . "</td>";
-            echo "<td>" . $row['Warehouse'] . "</td>";
-            echo "<td>" . $row['Price'] . "</td>";
-            echo "</tr>";
-         }
-
-         echo "</tbody>";
-         echo "</table>";
+            $SQLQuery =  "SELECT * FROM Parts";
+            $result = mysqli_query($DBConnect, $SQLQuery);
+            while ($row = mysqli_fetch_array($result))
+               {
+                  $Category = $row['Category'];
+               }
          ?>
+         <form action="resultCategories.php" method="post" id="categoryForm">
+            <select name="categoryOptions">
+               <?php        
+                  // SEARCH FOR CATEGORIES
+                  $categories = mysqli_query($DBConnect, "SELECT DISTINCT Category FROM Parts");
+                        
+                  while ($row = mysqli_fetch_array($categories))
+                  {
+                     echo "<option ";
+                     if ($row['Category'] == $Category)
+                     {
+                        echo 'selected';
+                     }
+                     echo ">" . $row['Category'] . "</option> ";
+                  }
+               ?>
+            </select>
+            <input type="submit" name="submit" value="Select"/>
+         </form>
+         <?php
+            
+            
+            if(isset($_POST['submit'])) {
+               $select_val = $_POST['categoryOptions'];
+            } else {
+               $select_val = NULL;
+            }
+            
+            
+            $con = mysqli_connect("localhost","admin","Password1", "CS_Tools");
+            // Check connection
+            if (mysqli_connect_errno()) {
+               echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            }
 
-         <h3> Sample Form </h3>
-         <table class="formtab">
-            <tr>
-               <td>
-                  <form>
-                     <p>Name:<input type = "text" name="name"> </p>
-                     <p>Email:<input type = "text" name= "email"> </p>
-                     <input type="submit" value = "submit" name="submit">
-                  <form>
-               </td>
-            </tr>
-         </table>
-         </div></div>
-         <div class="footer">
+            $categoryResults = mysqli_query($con, "SELECT * FROM Parts WHERE Category = '" . $select_val . "'");
+
+            echo "<table border='1'>";
+            echo "<thead>";
+            echo "<tr>";
+
+            $partsTitles = mysqli_query($con, "SHOW COLUMNS FROM Parts");
+
+            while ($row = mysqli_fetch_assoc($partsTitles)) {
+               echo "<th>" . $row['Field'] . "</th>";
+            }
+
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+
+            while($row = mysqli_fetch_array($categoryResults)) {
+               echo "<tr>";
+               echo "<td>" . $row['PartNum'] . "</td>";
+               echo "<td>" . $row['PartName'] . "</td>";
+               echo "<td>" . $row['Description'] . "</td>";
+               echo "<td>" . $row['Specs'] . "</td>";
+               echo "<td>" . $row['OnHand'] . "</td>";
+               echo "<td>" . $row['Category'] . "</td>";
+               echo "<td>" . $row['Warehouse'] . "</td>";
+               echo "<td>" . $row['Price'] . "</td>";
+               echo "</tr>";
+            }
+
+            echo "</tbody>";
+            echo "</table>";
+         ?>
+      </div>
+      </div>
+      <div class="footer">
             <p id = "copyright">Copyright statement.</p>
             <a id = "login" href = "adminLogin.php">Login</a>
-         </div>
+      </div>
       </div>
    </body>
 </html>

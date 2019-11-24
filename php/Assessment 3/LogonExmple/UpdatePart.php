@@ -4,6 +4,7 @@
 	{
 		echo "Failed to connect to Database: " . mysqli_connect_error();
 	}
+
 	$SQLQuery =  "SELECT * FROM Parts";
 	$result = mysqli_query($DBConnect, $SQLQuery);
 	
@@ -30,7 +31,7 @@
 		echo "<td>" . $row['Category'] . "</td>";
 		echo "<td>" . $row['Warehouse'] . "</td>";
 		echo "<td>" . $row['Price'] . "</td>";
-		echo "<td>" . "<a href=changeParts2.php?ID=" . $row['PartNum'] . ">Change</a>" . "</td>";
+		echo "<td>" . "<a href=changeParts.php?ID=" . $row['PartNum'] . ">Change</a>" . "</td>";
 	
 		echo "</tr>";
 	}

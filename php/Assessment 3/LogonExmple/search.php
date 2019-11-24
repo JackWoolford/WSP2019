@@ -22,68 +22,63 @@
             </ul>
          </div>
       <div class="content">
-      <div class="innerContent">
-         <p>
-         This is content. This should be displayed under the list.
-         Note this element is nested within the content div to allow the padding to work more effectively.
-         </p>
-         <h3>Sample Table </h3>
+         <div class="innerContent">
+            <h3>Search products</h3>
+            <form method="post" action="search.php?go" id="searchForm">
+               <input type="text" name="searchstring">
+               <input type="submit" name="submit" value="Search">
+            </form>
+            <br>
+            <br>
+            <?php
+               if(isset($_POST['submit'])) {
+                  if(isset($_GET['go'])) {
+                     $keyword=$_POST['searchstring'];
+                     $con = mysqli_connect("localhost","admin","Password1", "CS_Tools");
+                     // Check connection
+                     if (mysqli_connect_errno()) {
+                        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                     }
+            
+                     $partsResults = mysqli_query($con, "SELECT * FROM Parts WHERE PartName LIKE '%" . $keyword . "%'
+                                                         OR Description LIKE '%" . $keyword . "%'
+                                                         OR Specs LIKE '%" . $keyword . "%'");
 
-         <?php
-         $con = mysqli_connect("localhost","admin","Password1", "CS_Tools");
-         // Check connection
-         if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-         }
+                     echo "<table border='1'>";
+                     echo "<thead>";
+                     echo "<tr>";
 
-         
+                     $partsTitles = mysqli_query($con, "SHOW COLUMNS FROM Parts");
 
-         $partsResults = mysqli_query($con, "SELECT * FROM Parts LIMIT 4");
+                     while ($row = mysqli_fetch_assoc($partsTitles)) {
+                        echo "<th>" . $row['Field'] . "</th>";
+                     }
 
-         echo "<table border='1'>";
-         echo "<thead>";
-         echo "<tr>";
+                     echo "</tr>";
+                     echo "</thead>";
+                     echo "<tbody>";
 
-         $partsTitles = mysqli_query($con, "SHOW COLUMNS FROM Parts");
+                     while($row = mysqli_fetch_array($partsResults)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['PartNum'] . "</td>";
+                        echo "<td>" . $row['PartName'] . "</td>";
+                        echo "<td>" . $row['Description'] . "</td>";
+                        echo "<td>" . $row['Specs'] . "</td>";
+                        echo "<td>" . $row['OnHand'] . "</td>";
+                        echo "<td>" . $row['Category'] . "</td>";
+                        echo "<td>" . $row['Warehouse'] . "</td>";
+                        echo "<td>" . $row['Price'] . "</td>";
+                        echo "</tr>";
+                     }
 
-         while ($row = mysqli_fetch_assoc($partsTitles)) {
-            echo "<th>" . $row['Field'] . "</th>";
-         }
+                     echo "</tbody>";
+                     echo "</table>";
+                     } 
+                  }        
 
-         echo "</tr>";
-         echo "</thead>";
-         echo "<tbody>";
-
-         while($row = mysqli_fetch_array($partsResults)) {
-            echo "<tr>";
-            echo "<td>" . $row['PartNum'] . "</td>";
-            echo "<td>" . $row['PartName'] . "</td>";
-            echo "<td>" . $row['Description'] . "</td>";
-            echo "<td>" . $row['Specs'] . "</td>";
-            echo "<td>" . $row['OnHand'] . "</td>";
-            echo "<td>" . $row['Category'] . "</td>";
-            echo "<td>" . $row['Warehouse'] . "</td>";
-            echo "<td>" . $row['Price'] . "</td>";
-            echo "</tr>";
-         }
-
-         echo "</tbody>";
-         echo "</table>";
-         ?>
-
-         <h3> Sample Form </h3>
-         <table class="formtab">
-            <tr>
-               <td>
-                  <form>
-                     <p>Name:<input type = "text" name="name"> </p>
-                     <p>Email:<input type = "text" name= "email"> </p>
-                     <input type="submit" value = "submit" name="submit">
-                  <form>
-               </td>
-            </tr>
-         </table>
-         </div></div>
+            ?>
+            </div>
+         </div>
          <div class="footer">
             <p id = "copyright">Copyright statement.</p>
             <a id = "login" href = "adminLogin.php">Login</a>

@@ -42,7 +42,7 @@
         echo "Error creating Customers table: " . mysqli_error($con);
     }
 
-    // Create accounts table
+    // Create orders table
     $sql2 = 
     "CREATE TABLE Orders (
     OrderNum INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

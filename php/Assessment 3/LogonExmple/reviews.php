@@ -23,60 +23,30 @@
          </div>
       <div class="content">
       <div class="innerContent">
+         <h3>Reviews</h3>
          <p>
-         This is content. This should be displayed under the list.
-         Note this element is nested within the content div to allow the padding to work more effectively.
+         Lewis <br>
+         CS Tools provide amazing deals and 10/10 customer service!
          </p>
-         <h3>Sample Table </h3>
-
-         <?php
-         $con = mysqli_connect("localhost","admin","Password1", "CS_Tools");
-         // Check connection
-         if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-         }
-
-         $partsResults = mysqli_query($con, "SELECT * FROM Parts LIMIT 4");
-
-         echo "<table border='1'>";
-         echo "<thead>";
-         echo "<tr>";
-
-         $partsTitles = mysqli_query($con, "SHOW COLUMNS FROM Parts");
-
-         while ($row = mysqli_fetch_assoc($partsTitles)) {
-            echo "<th>" . $row['Field'] . "</th>";
-         }
-
-         echo "</tr>";
-         echo "</thead>";
-         echo "<tbody>";
-
-         while($row = mysqli_fetch_array($partsResults)) {
-            echo "<tr>";
-            echo "<td>" . $row['PartNum'] . "</td>";
-            echo "<td>" . $row['PartName'] . "</td>";
-            echo "<td>" . $row['Description'] . "</td>";
-            echo "<td>" . $row['Specs'] . "</td>";
-            echo "<td>" . $row['OnHand'] . "</td>";
-            echo "<td>" . $row['Category'] . "</td>";
-            echo "<td>" . $row['Warehouse'] . "</td>";
-            echo "<td>" . $row['Price'] . "</td>";
-            echo "</tr>";
-         }
-
-         echo "</tbody>";
-         echo "</table>";
-         ?>
-
-         <h3> Sample Form </h3>
+         <p>
+         Duncan <br>
+         I bought a GPU from CS Tools and I'm impressed somehow they delivered it in a day.
+         </p>
+         <p>
+         Tom <br>
+         CS Tools customer service has been great, they helped me work out what I needed and arraned a deal on the parts.
+         </p>
+         <h3>Post a review</h3>
          <table class="formtab">
             <tr>
                <td>
                   <form>
-                     <p>Name:<input type = "text" name="name"> </p>
-                     <p>Email:<input type = "text" name= "email"> </p>
-                     <input type="submit" value = "submit" name="submit">
+                     <p>Name: <input type="text" name="name"></p>
+                     <p>Review:</p>
+                     <textarea maxlength=100 rows=5 cols=40 name="review"></textarea>
+                     <br>
+                     <br>
+                     <input type="submit" value = "Submit" name="submit">
                   <form>
                </td>
             </tr>

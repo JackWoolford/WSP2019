@@ -26,6 +26,9 @@
 					<select name="CatName" required>
 						
 						<?php        //SEARCH FOR CATEGORIES
+							error_reporting(E_ALL);
+							ini_set('display_errors',1);
+
 							$DBConnect = mysqli_connect("localhost","admin","Password1","CS_Tools");
 							$SQLQuery =  "SELECT DISTINCT Category FROM Parts";
 							$result = mysqli_query($DBConnect, $SQLQuery);

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+	error_reporting(E_ALL);
+	ini_set('display_errors',1);
+
 	// Connect to Database and alert if error
 	$DBConnect=mysqli_connect("localhost","admin","Password1","CS_Tools");
 	if (mysqli_connect_errno())
@@ -12,15 +15,15 @@
 	$SQLQuery =  "SELECT * FROM Parts WHERE PartNum = $PartNum";
 	$result = mysqli_query($DBConnect, $SQLQuery);
 	while ($row = mysqli_fetch_array($result))
-		{
-			$PartName = $row['PartName'];
-			$Description = $row['Description'];
-			$Specs = $row['Specs'];
-			$OnHand = $row['OnHand'];
-			$Category = $row['Category'];
-			$Warehouse = $row['Warehouse'];
-			$Price = $row['Price'];
-		}
+	{
+		$PartName = $row['PartName'];
+		$Description = $row['Description'];
+		$Specs = $row['Specs'];
+		$OnHand = $row['OnHand'];
+		$Category = $row['Category'];
+		$Warehouse = $row['Warehouse'];
+		$Price = $row['Price'];
+	}
 ?>
 <html>
 
@@ -47,24 +50,22 @@
 			<tr>
 				<td>Category Name:</td>
 				<td> 
-					<select name="Category" required>
-								
+					<select name="Category" required>		
 						<?php        //SEARCH FOR CATEGORIES
 							$DBConnect = mysqli_connect("localhost","admin","Password1","CS_Tools");
-							$SQLQuery =  "SELECT DISTINCT Category FROM Parts";
+							$SQLQuery = "SELECT DISTINCT Category FROM Parts";
 							$result = mysqli_query($DBConnect, $SQLQuery);
-									
-							while ($row = mysqli_fetch_array($result))
+
+							while ($row = mysqli_fetch_array($result)) 
 							{
 								echo "<option ";
 								if ($row['Category'] == $Category)
 								{
 									echo 'selected';
 								}
-									echo ">" . $row['Category'] . "</option> ";
-								}
-						?>
-								
+								echo ">" . $row['Category'] . "</option> ";
+							}
+						?>		
 					</select>
 				</td>
 			</tr>
@@ -80,4 +81,13 @@
 				<td><input type='submit'/></td>
 			</tr>
 		</table>
-	</form></html>
+	</form>
+	<?php
+		if(isset($_POST['submit'])) {
+			$select_val = $_POST['Category'];
+			echo "<p>You have selected :" . $select_val . "</p>";
+		} else {
+			$select_val = NULL;
+		}
+	?>
+</html>

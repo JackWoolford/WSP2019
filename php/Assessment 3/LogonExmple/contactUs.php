@@ -23,18 +23,27 @@
          </div>
       <div class="content">
       <div class="innerContent">
+         <h3>Located</h3>
          <p>
-         This is content. This should be displayed under the list.
-         Note this element is nested within the content div to allow the padding to work more effectively.
+         Boundary Rd,<br>
+         East Geelong, Victoria<br>
+         Australia 3219
          </p>
-         <h3> Sample Form </h3>
+         <h3>Call Us</h3>
+         <p>         
+         03 1234 5678
+         </p>
+         <h3>Contact Us</h3>
          <table class="formtab">
             <tr>
                <td>
                   <form>
                      <p>Name:<input type = "text" name="name"> </p>
                      <p>Email:<input type = "text" name= "email"> </p>
-                     <input type="submit" value = "submit" name="submit">
+                     <textarea maxlength=100 rows=5 cols=40 name="review"></textarea>
+                     <br>
+                     <br>
+                     <input type="submit" value = "Submit" name="submit">
                   <form>
                </td>
             </tr>
