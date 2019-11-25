@@ -24,8 +24,6 @@
       <div class="content">
       <div class="innerContent">
          <h3>Select Category </h3>
-         
-
          <?php
 
             error_reporting(E_ALL);

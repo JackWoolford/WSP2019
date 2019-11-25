@@ -36,18 +36,19 @@
          Tom <br>
          CS Tools customer service has been great, they helped me work out what I needed and arraned a deal on the parts.
          </p>
+         
          <h3>Post a review</h3>
          <table class="formtab">
             <tr>
                <td>
-                  <form>
+                  <form method="post" action="thanks.php">
                      <p>Name: <input type="text" name="name"></p>
                      <p>Review:</p>
                      <textarea maxlength=100 rows=5 cols=40 name="review"></textarea>
                      <br>
                      <br>
                      <input type="submit" value = "Submit" name="submit">
-                  <form>
+                  </form>
                </td>
             </tr>
          </table>
